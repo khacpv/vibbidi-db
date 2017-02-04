@@ -73,7 +73,19 @@ function findVideoIdByTitleAndArtist($conn, $title, $artist) {
 //     echo $videoId;
 // }
 
-function findGenreByTitle($conn, $title){
+function findGenreByTitle($conn, $input){
+    $title = $input;
+    
+    if($title == 'Alternative/R&B'){
+        $title = 'Alternative R&B';
+    }
+    if($title == 'Classic/R&B'){
+        $title = 'Classic R&B';
+    }
+    if($title == 'Folks'){
+        $title = 'Folk';
+    }
+
     $sql = "SELECT Id, Title FROM V4.genres WHERE Title='$title' LIMIT 10;";
     // echo $sql;
 
@@ -201,6 +213,10 @@ foreach ($data_C_All as $key => $video) {
     $SubGenre1 = replaceSpecialCharacter($video['Sub Genre 1']);
     $SubGenre2 = replaceSpecialCharacter($video['Sub Genre 2']);
     $YouTubeUrl = $video['YouTube URL'];
+    
+    if($YouTubeUrl == NULL){
+        $YouTubeUrl = $video['URL'];
+    }
 
     $VideoFileName = findVideoFileNameFromUrl($YouTubeUrl);
 
