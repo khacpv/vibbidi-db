@@ -172,8 +172,8 @@ function checkVideoMarkToInsert($videoId, $genreId){
 }
 
 function replaceSpecialCharacter($input){
-    $output = str_replace("'", "\'", $input);
-    // $output = str_replace("/", "\/", $output);
+    $output = str_replace("'", "\'", $input);   // My's song -> My\'s song
+    // $output = str_replace("/", "\/", $output);   // Classic\R&B -> Classic\/R&B
     return $output;
 }
 
